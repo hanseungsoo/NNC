@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.han.coaching" >
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".noonWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="chae.widget.update"/>
+                <action android:name="chae.widget.left"/>
+                <action android:name="chae.widget.right"/>
+                <action android:name="chae.widget.click1"/>
+                <action android:name="chae.widget.click2"/>
+                <action android:name="chae.widget.swap"/>
+
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_configuration"/>
+        </receiver>
+
+        <activity android:name=".optionActivity"/>
+        <activity android:name=".DBActivity"/>
+
+        <service android:name=".GpsService"/>
+        <receiver android:name=".RestartService">
+            <intent-filter>
+                <action android:name="ACTION.RESTART.PersistentService"/>
+                <action android:name="ACTION.RESTART.FOODGPS"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".GetFood">
+            <intent-filter>
+                <action android:name="ACTION.GET.ONE"/>
+                <action android:name="ACTION.GET.TWO"/>
+                <action android:name="ACTION.GET.THREE"/>
+                <action android:name="ACTION.GET.FOUR"/>
+                <action android:name="ACTION.GET.FIVE"/>
+                <action android:name="ACTION.GET.SIX"/>
+                <action android:name="ACTION.GET.SEVEN"/>
+                <action android:name="ACTION.GET.NORMAL"/>
+
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Weather">
+            <intent-filter>
+                <action android:name="Weather.a"/>
+                <action android:name="Detailaddr"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".settingBroadcast">
+            <intent-filter>
+                <action android:name="ACTION.SET.PATTERN"/>
+                <action android:name="ACTION.SET.PLACE"/>
+                <action android:name="ACTION.SET.ONEWEEK"/>
+                <action android:name="ACTION.SET.NEWS"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".AnniActivity">
+        </activity>
+        <activity
+            android:name=".AnniEditActivity">
+        </activity>
+        <activity
+            android:name=".AnniModify">
+        </activity>
+
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+</manifest>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button1"
+            android:onClick="foodPatternViewClicked"
+            android:text="음식패턴 보기"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/button1"
+            android:id="@+id/button22"
+            android:onClick="foodFavoriteViewClicked"
+            android:text="선호음식 확인"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button21"
+            android:onClick="TimeChecked"
+            android:text="시간대 확인"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button22"
+            android:layout_toEndOf="@+id/button22" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거주지 확인"
+            android:onClick="abodeViewClicked"
+            android:id="@+id/button3"
+            android:layout_below="@+id/button1"
+            android:layout_toLeftOf="@+id/button22"
+            android:layout_toStartOf="@+id/button22" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="abodeCleanCLicked"
+            android:layout_below="@+id/button1"
+            android:layout_toRightOf="@+id/button3"
+            android:layout_toEndOf="@+id/button3" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:verticalScrollbarPosition="right">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:id="@+id/dbtv"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="ABCDEFG"
+            android:textSize="19dp"/>
+    </ScrollView>
+
+</LinearLayout>
