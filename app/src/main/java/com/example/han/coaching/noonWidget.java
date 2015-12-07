@@ -225,8 +225,9 @@ public class noonWidget extends AppWidgetProvider {
             PendingIntent pendingIntent_S = PendingIntent.getBroadcast(context, 0, swap_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_O = PendingIntent.getActivity(context, 0, option_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_I = PendingIntent.getBroadcast(MainActivity.mContext, 0, select_item_intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            PendingIntent pendingIntent_F = PendingIntent.getBroadcast(context, 0, reload_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_T = PendingIntent.getBroadcast(context, 0, thema_change_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent_F = PendingIntent.getBroadcast(context, 0, reload_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
             updateViews.setOnClickPendingIntent(R.id.call_button, pendingIntent_D);
             updateViews.setOnClickPendingIntent(R.id.left_button, pendingIntent_L);
             updateViews.setOnClickPendingIntent(R.id.right_button, pendingIntent_R);
@@ -265,9 +266,18 @@ public class noonWidget extends AppWidgetProvider {
 
 
             Intent click_intent = new Intent();
+            Intent thema_change_intent = new Intent();
+            Intent select_item_intent = new Intent();
             click_intent.setAction("chae.widget.click2");
+            thema_change_intent.setAction("chae.widget.thema.change");
+            select_item_intent.setAction("chae.widget.select.item");
             PendingIntent pendingIntent_C = PendingIntent.getBroadcast(context, 0, click_intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            updateViews.setOnClickPendingIntent(R.id.layout2, pendingIntent_C);
+            PendingIntent pendingIntent_I = PendingIntent.getBroadcast(MainActivity.mContext, 0, select_item_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent_T = PendingIntent.getBroadcast(context, 0, thema_change_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            updateViews.setOnClickPendingIntent(R.id.widget_image, pendingIntent_C);
+            updateViews.setOnClickPendingIntent(R.id.newsLayout, pendingIntent_C);
+            updateViews.setOnClickPendingIntent(R.id.thema_change_button, pendingIntent_T);
+            updateViews.setOnClickPendingIntent(R.id.select_item_button,pendingIntent_I);
             String url;
 
             url = MainActivity.NewsNews.get(0).getImageUrl();

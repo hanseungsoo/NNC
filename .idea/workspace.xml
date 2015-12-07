@@ -19,19 +19,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa738135-12bb-4c34-873e-3671d721a806" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\app\src\main\res\drawable-hdpi\plus.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\app\src\main\res\drawable-xxhdpi\call.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\app\src\main\res\drawable-xxhdpi\enter.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\app\src\main\res\drawable\swap.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\app\src\main\res\layout\widget_layout_default.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\build\intermediates\dex-cache\cache.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\build\intermediates\gradle_project_sync_data.bin" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/xml/widget_configuration.xml" afterPath="$PROJECT_DIR$/app/src/main/res/xml/widget_configuration.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" />
     </list>
     <ignored path="NNC.iws" />
@@ -60,24 +55,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="noonWidget.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="noonWidget.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="285" column="31" selection-start-line="285" selection-start-column="31" selection-end-line="285" selection-end-column="31" />
+            <state vertical-scroll-proportion="-0.39963832">
+              <caret line="279" column="89" selection-start-line="279" selection-start-column="89" selection-end-line="279" selection-end-column="89" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget_layout2.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="widget_layout2.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml">
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.941176">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -1544,6 +1539,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" />
       </list>
     </option>
@@ -1876,21 +1872,32 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="285" column="31" selection-start-line="285" selection-start-column="31" selection-end-line="285" selection-end-column="31" />
+        <state vertical-scroll-proportion="-10.617647">
+          <caret line="37" column="21" selection-start-line="4" selection-start-column="0" selection-end-line="37" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml">
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.941176">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.39963832">
+          <caret line="279" column="89" selection-start-line="279" selection-start-column="89" selection-end-line="279" selection-end-column="89" />
           <folding />
         </state>
       </provider>
