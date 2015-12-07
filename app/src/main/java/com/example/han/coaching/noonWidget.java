@@ -1,13 +1,11 @@
 package com.example.han.coaching;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
@@ -73,7 +71,6 @@ public class noonWidget extends AppWidgetProvider {
         for (int i = 0; i < appWidgetIds.length; i++) {
             int widgetId = appWidgetIds[i];
             updateAppWidget(context, appWidgetManager, widgetId);
-            saveNoon(context);
         }
     }
 
@@ -81,11 +78,9 @@ public class noonWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         if (intent.getAction().equals("chae.widget.update")) {
-            loadNoon(context);
             widgetUpdate(context);
         }
         if (intent.getAction().equals("chae.widget.left")) {
-            loadNoon(context);
             swapValue = 0;
             int value = intent.getIntExtra("T_value", 0);
             switch (value) {
@@ -107,7 +102,6 @@ public class noonWidget extends AppWidgetProvider {
         }
 
         if (intent.getAction().equals("chae.widget.right")) {
-            loadNoon(context);
             swapValue = 0;
             int value = intent.getIntExtra("T_value", 0);
             switch (value) {
@@ -142,7 +136,6 @@ public class noonWidget extends AppWidgetProvider {
             enterMain(context);
         }
         if (intent.getAction().equals("chae.widget.swap")) {
-            loadNoon(context);
             if (swapValue == 0) {
                 swapValue = 1;
             } else if (swapValue == 1) {
@@ -153,12 +146,10 @@ public class noonWidget extends AppWidgetProvider {
             widgetUpdate(context);
         }
         if(intent.getAction().equals("chae.widget.reload")) {
-            loadNoon(context);
             Toast.makeText(context,"RELOAD:"+contentValue+","+themaValue+","+swapValue, Toast.LENGTH_SHORT).show();
             widgetUpdate(context);
         }
         if(intent.getAction().equals("chae.widget.thema.change")) {
-            loadNoon(context);
             if (contentValue.equals("content2")) {
                 contentValue = "content1";
             } else {
@@ -168,7 +159,6 @@ public class noonWidget extends AppWidgetProvider {
         }
         if(intent.getAction().equals("chae.widget.select.item")) {
             Toast.makeText(context,"선택 되었습니다.", Toast.LENGTH_SHORT).show();
-            loadNoon(context);
             if (contentValue.equals("content1")) {
                 noonFoodDb();
                 MainActivity.ViewInt=1;
@@ -179,6 +169,7 @@ public class noonWidget extends AppWidgetProvider {
             CLICK_FLAG = true;
             enterMain(context);
         }
+
     }
 
     static void updateAppWidget(Context context, final AppWidgetManager appWidgetManager, final int appWidgetId) {
@@ -196,6 +187,7 @@ public class noonWidget extends AppWidgetProvider {
             for (int i = 0; i < phn.length; i++) {
                 phone += phn[i];
             }
+
             Log.i("widget", "before configure : " + phone);
             configureLayout(item);
             Intent left_intent = new Intent();
@@ -210,21 +202,28 @@ public class noonWidget extends AppWidgetProvider {
             left_intent.putExtra("T_value", themaValue);
             right_intent.putExtra("T_value", themaValue);
             left_intent.setAction("chae.widget.left");
+            left_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             right_intent.setAction("chae.widget.right");
+            right_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             click_intent.setAction("chae.widget.click1");
+            click_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             call_intent.setAction(Intent.ACTION_DIAL);
             call_intent.setData(Uri.parse("tel:" + phone));
             swap_intent.setAction("chae.widget.swap");
+            swap_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             reload_intent.setAction("chae.widget.reload");
+            reload_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             thema_change_intent.setAction("chae.widget.thema.change");
+            thema_change_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             select_item_intent.setAction("chae.widget.select.item");
+            select_item_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             PendingIntent pendingIntent_L = PendingIntent.getBroadcast(context, 0, left_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_R = PendingIntent.getBroadcast(context, 0, right_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_C = PendingIntent.getBroadcast(context, 0, click_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_D = PendingIntent.getActivity(context, 0, call_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_S = PendingIntent.getBroadcast(context, 0, swap_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_O = PendingIntent.getActivity(context, 0, option_intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            PendingIntent pendingIntent_I = PendingIntent.getBroadcast(MainActivity.mContext, 0, select_item_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent_I = PendingIntent.getBroadcast(context, 0, select_item_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_T = PendingIntent.getBroadcast(context, 0, thema_change_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_F = PendingIntent.getBroadcast(context, 0, reload_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -269,32 +268,23 @@ public class noonWidget extends AppWidgetProvider {
             Intent thema_change_intent = new Intent();
             Intent select_item_intent = new Intent();
             click_intent.setAction("chae.widget.click2");
+            click_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             thema_change_intent.setAction("chae.widget.thema.change");
+            thema_change_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             select_item_intent.setAction("chae.widget.select.item");
+            select_item_intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             PendingIntent pendingIntent_C = PendingIntent.getBroadcast(context, 0, click_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_I = PendingIntent.getBroadcast(MainActivity.mContext, 0, select_item_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent pendingIntent_T = PendingIntent.getBroadcast(context, 0, thema_change_intent, PendingIntent.FLAG_UPDATE_CURRENT);
             updateViews.setOnClickPendingIntent(R.id.widget_image, pendingIntent_C);
             updateViews.setOnClickPendingIntent(R.id.newsLayout, pendingIntent_C);
             updateViews.setOnClickPendingIntent(R.id.thema_change_button, pendingIntent_T);
-            updateViews.setOnClickPendingIntent(R.id.select_item_button,pendingIntent_I);
-            String url;
+            updateViews.setOnClickPendingIntent(R.id.select_item_button, pendingIntent_I);
 
-            url = MainActivity.NewsNews.get(0).getImageUrl();
-
-            ImageSize minImazeSize = new ImageSize(120, 400);
-            if(item.imageUrl.equals("")) {
-                item.imageUrl = "http://222.116.135.76:8080/Noon/images/noon.png";
-            }
-            ImageLoader.getInstance().loadImage(item.imageUrl, minImazeSize, displayOptions, new SimpleImageLoadingListener() {
-                @Override
-                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                    updateViews.setImageViewBitmap(R.id.widget_image, loadedImage);
-                    appWidgetManager.updateAppWidget(appWidgetId, updateViews);
-                }
-            });
             appWidgetManager.updateAppWidget(appWidgetId, updateViews);
         } else {
+            layoutId = R.layout.widget_layout2;
+            updateViews = new RemoteViews(context.getPackageName(), layoutId);
             appWidgetManager.updateAppWidget(appWidgetId, updateViews);
         }
     }
@@ -420,23 +410,4 @@ public class noonWidget extends AppWidgetProvider {
         context.startActivity(i);
     }
 
-    public static  void saveNoon(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(TAG, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.remove("contentValue").commit();
-        editor.putString("contentValue", contentValue);
-        editor.remove("themaValue").commit();
-        editor.putInt("themaValue", themaValue);
-        editor.remove("swapValue").commit();
-        editor.putInt("swapValue", swapValue);
-
-        editor.commit();
-    }
-
-    private void loadNoon(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(TAG, Activity.MODE_PRIVATE);
-        contentValue = pref.getString("contentValue","content2");
-        themaValue = pref.getInt("themaValue",0);
-        swapValue = pref.getInt("swapValue",0);
-    }
 }

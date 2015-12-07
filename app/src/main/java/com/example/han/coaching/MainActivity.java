@@ -42,7 +42,6 @@ import java.util.ArrayList;
 public class MainActivity extends FragmentActivity {
 
 
-
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -371,7 +370,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     public static void mmmm() {
-        noonWidget.saveNoon(mContext);
         Intent update = new Intent();
         update.setAction("chae.widget.update");
         mContext.sendBroadcast(update);
@@ -443,6 +441,7 @@ public class MainActivity extends FragmentActivity {
                         SelectBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                 Item in1 = MainActivity.ThemaItem.get(0);
                                 DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                 dbHandler.click_time();
@@ -488,6 +487,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(0);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -528,6 +528,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(1);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -567,6 +568,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(2);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -612,6 +614,7 @@ public class MainActivity extends FragmentActivity {
                                     SelectBtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                             Item in1 = MainActivity.ThemaItem.get(0);
                                             DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                             dbHandler.click_time();
@@ -660,6 +663,7 @@ public class MainActivity extends FragmentActivity {
                         SelectBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                 Item in1 = MainActivity.ThemaItem.get(3);
                                 DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                 dbHandler.click_time();
@@ -706,6 +710,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(3);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -747,6 +752,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(4);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -787,6 +793,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(5);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -832,6 +839,7 @@ public class MainActivity extends FragmentActivity {
                                     SelectBtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                             Item in1 = MainActivity.ThemaItem.get(3);
                                             DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                             dbHandler.click_time();
@@ -878,6 +886,7 @@ public class MainActivity extends FragmentActivity {
                         SelectBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                 Item in1 = MainActivity.ThemaItem.get(6);
                                 DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                 dbHandler.click_time();
@@ -924,6 +933,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(6);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -963,8 +973,9 @@ public class MainActivity extends FragmentActivity {
                                                 }
                                             });
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(7);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -1005,6 +1016,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(8);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -1050,6 +1062,7 @@ public class MainActivity extends FragmentActivity {
                                     SelectBtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                             Item in1 = MainActivity.ThemaItem.get(6);
                                             DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                             dbHandler.click_time();
@@ -1096,6 +1109,7 @@ public class MainActivity extends FragmentActivity {
                         SelectBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                 Item in1 = MainActivity.ThemaItem.get(9);
                                 DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                 dbHandler.click_time();
@@ -1142,6 +1156,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(9);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -1183,6 +1198,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(10);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -1223,6 +1239,7 @@ public class MainActivity extends FragmentActivity {
                                             SelectBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
+                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                                     Item in1 = MainActivity.ThemaItem.get(11);
                                                     DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                                     dbHandler.click_time();
@@ -1268,6 +1285,7 @@ public class MainActivity extends FragmentActivity {
                                     SelectBtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
                                             Item in1 = MainActivity.ThemaItem.get(9);
                                             DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
                                             dbHandler.click_time();
