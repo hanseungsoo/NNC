@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="match_parent"
-            android:src="@drawable/plus"
+            android:src="@drawable/noon_widget_icon"
             android:id="@+id/widget_image"
             android:scaleType="fitCenter"
             />

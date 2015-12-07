@@ -3,8 +3,9 @@
     package="com.example.han.coaching" >
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/noon_icon"
         android:label="@string/app_name"
+        android:logo="@drawable/noon"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
 
@@ -27,7 +28,10 @@
                 <action android:name="chae.widget.click1"/>
                 <action android:name="chae.widget.click2"/>
                 <action android:name="chae.widget.swap"/>
-
+                <action android:name="chae.widget.reload"/>
+                <action android:name="chae.widget.thema.change"/>
+                <action android:name="chae.widget.select.item"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_configuration"/>
         </receiver>
