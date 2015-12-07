@@ -182,11 +182,11 @@ public class optionActivity extends FragmentActivity {
 
     public void onClicked(View v) {
         if (noonWidget.contentValue.equals("content1")) {
+            Toast.makeText(this, "위젯이 뉴스를 보여줍니다."+noonWidget.contentValue, Toast.LENGTH_SHORT).show();
             noonWidget.contentValue = "content2";
-            Toast.makeText(this, "위젯이 뉴스를 보여줍니다.", Toast.LENGTH_SHORT).show();
         } else {
+            Toast.makeText(this, "위젯이 추천 음식점을 보여줍니다."+noonWidget.contentValue, Toast.LENGTH_SHORT).show();
             noonWidget.contentValue="content1";
-            Toast.makeText(this, "위젯이 추천 음식점을 보여줍니다.", Toast.LENGTH_SHORT).show();
         }
         MainActivity.mmmm();
 

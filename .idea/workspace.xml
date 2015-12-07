@@ -19,15 +19,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa738135-12bb-4c34-873e-3671d721a806" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\build\intermediates\dex-cache\cache.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\noon\workspace\1207\NNC\build\intermediates\gradle_project_sync_data.bin" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/optionActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/optionActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NNC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,12 +55,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="noonWidget.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="noonWidget.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.39963832">
-              <caret line="279" column="89" selection-start-line="279" selection-start-column="89" selection-end-line="279" selection-end-column="89" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="306" column="48" selection-start-line="306" selection-start-column="48" selection-end-line="306" selection-end-column="48" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="optionActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/optionActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="209" column="1" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.278481">
+              <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
+              <folding>
+                <element signature="e#4392#4412#0" expanded="true" />
+                <element signature="e#4481#4502#0" expanded="true" />
+                <element signature="e#16912#16932#0" expanded="true" />
+                <element signature="e#17001#17022#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1541,6 +1566,9 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/widget_layout2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/optionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -1669,9 +1697,9 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="D:/눈치코칭" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../NC/NC" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="d723069f" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="W7J0214927000403" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -1894,11 +1922,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/noonWidget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.39963832">
-          <caret line="279" column="89" selection-start-line="279" selection-start-column="89" selection-end-line="279" selection-end-column="89" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="306" column="48" selection-start-line="306" selection-start-column="48" selection-end-line="306" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/optionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="1" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/han/coaching/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.278481">
+          <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
+          <folding>
+            <element signature="e#4392#4412#0" expanded="true" />
+            <element signature="e#4481#4502#0" expanded="true" />
+            <element signature="e#16912#16932#0" expanded="true" />
+            <element signature="e#17001#17022#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
