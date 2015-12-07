@@ -59,6 +59,7 @@ public class MainActivity extends FragmentActivity {
     TextView addrTv = null;
     ImageView foodImg = null;
     Spinner SP2 =null;
+    Button SelectBtn = null;
     ViewGroup mapViewContainer = null;
     static Handler mHandler;
     static int ViewInt = 1;
@@ -179,6 +180,7 @@ public class MainActivity extends FragmentActivity {
                         addrTv = (TextView)findViewById(R.id.addrView);
                         foodImg = (ImageView)findViewById(R.id.cookImage);
                         SP2 = (Spinner)findViewById(R.id.spinner2);
+                        SelectBtn = (Button)findViewById(R.id.check);
                         final ArrayList<String> arraylist2 = new ArrayList<String>();
                         arraylist2.add("추천1");
                         arraylist2.add("추천2");
@@ -269,6 +271,7 @@ public class MainActivity extends FragmentActivity {
                 addrTv = (TextView)findViewById(R.id.addrView);
                 foodImg = (ImageView)findViewById(R.id.cookImage);
                 SP2 = (Spinner)findViewById(R.id.spinner2);
+                SelectBtn = (Button)findViewById(R.id.check);
                 final ArrayList<String> arraylist2 = new ArrayList<String>();
                 arraylist2.add("추천1");
                 arraylist2.add("추천2");
@@ -429,6 +432,24 @@ public class MainActivity extends FragmentActivity {
                         }else{
                             new DownloadImageTask(foodImg).execute(in1.imageUrl);
                         }
+                        telTv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(0);
+                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                startActivity(intent);
+                            }
+                        });
+                        SelectBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(0);
+                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                dbHandler.click_time();
+                                dbHandler.food_favorite_insert();
+                                dbHandler.close();
+                            }
+                        });
                         marker.setItemName("Default Marker");
                         marker.setTag(0);
                         marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -456,6 +477,24 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(0);
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(0);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -478,6 +517,24 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(1);
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(1);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -499,6 +556,24 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(2);
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(2);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -525,6 +600,25 @@ public class MainActivity extends FragmentActivity {
                                     }else{
                                         new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                     }
+                                    telTv.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(0);
+                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(0);
+                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                            dbHandler.click_time();
+                                            dbHandler.food_favorite_insert();
+                                            dbHandler.close();
+                                        }
+                                    });
                                     marker.setItemName("Default Marker");
                                     marker.setTag(0);
                                     marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -554,6 +648,25 @@ public class MainActivity extends FragmentActivity {
                         }else{
                             new DownloadImageTask(foodImg).execute(in1.imageUrl);
                         }
+                        telTv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(3);
+                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                startActivity(intent);
+                            }
+                        });
+                        SelectBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(3);
+                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                dbHandler.click_time();
+                                dbHandler.food_favorite_insert();
+                                dbHandler.close();
+                            }
+                        });
                         marker.setItemName("Default Marker");
                         marker.setTag(0);
                         marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -581,6 +694,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(3);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(3);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -603,6 +735,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(4);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(4);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -624,6 +775,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(5);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(5);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -650,6 +820,25 @@ public class MainActivity extends FragmentActivity {
                                     }else{
                                         new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                     }
+                                    telTv.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(3);
+                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(3);
+                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                            dbHandler.click_time();
+                                            dbHandler.food_favorite_insert();
+                                            dbHandler.close();
+                                        }
+                                    });
                                     marker.setItemName("Default Marker");
                                     marker.setTag(0);
                                     marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -677,6 +866,25 @@ public class MainActivity extends FragmentActivity {
                         }else{
                             new DownloadImageTask(foodImg).execute(in1.imageUrl);
                         }
+                        telTv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(6);
+                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                startActivity(intent);
+                            }
+                        });
+                        SelectBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(6);
+                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                dbHandler.click_time();
+                                dbHandler.food_favorite_insert();
+                                dbHandler.close();
+                            }
+                        });
                         marker.setItemName("Default Marker");
                         marker.setTag(0);
                         marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -704,6 +912,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(6);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(6);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -726,6 +953,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(7);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(7);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -747,6 +993,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(8);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(8);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -773,6 +1038,25 @@ public class MainActivity extends FragmentActivity {
                                     }else{
                                         new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                     }
+                                    telTv.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(6);
+                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(6);
+                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                            dbHandler.click_time();
+                                            dbHandler.food_favorite_insert();
+                                            dbHandler.close();
+                                        }
+                                    });
                                     marker.setItemName("Default Marker");
                                     marker.setTag(0);
                                     marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -800,6 +1084,25 @@ public class MainActivity extends FragmentActivity {
                         }else{
                             new DownloadImageTask(foodImg).execute(in1.imageUrl);
                         }
+                        telTv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(9);
+                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                startActivity(intent);
+                            }
+                        });
+                        SelectBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Item in1 = MainActivity.ThemaItem.get(9);
+                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                dbHandler.click_time();
+                                dbHandler.food_favorite_insert();
+                                dbHandler.close();
+                            }
+                        });
                         marker.setItemName("Default Marker");
                         marker.setTag(0);
                         marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -827,6 +1130,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(9);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(9);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -849,6 +1171,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(10);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(10);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -870,6 +1211,25 @@ public class MainActivity extends FragmentActivity {
                                             }else{
                                                 new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                             }
+                                            telTv.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(11);
+                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    Item in1 = MainActivity.ThemaItem.get(11);
+                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                                    dbHandler.click_time();
+                                                    dbHandler.food_favorite_insert();
+                                                    dbHandler.close();
+                                                }
+                                            });
                                             marker.setItemName("Default Marker");
                                             marker.setTag(0);
                                             marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
@@ -896,6 +1256,25 @@ public class MainActivity extends FragmentActivity {
                                     }else{
                                         new DownloadImageTask(foodImg).execute(in1.imageUrl);
                                     }
+                                    telTv.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(9);
+                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Item in1 = MainActivity.ThemaItem.get(9);
+                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                                            dbHandler.click_time();
+                                            dbHandler.food_favorite_insert();
+                                            dbHandler.close();
+                                        }
+                                    });
                                     marker.setItemName("Default Marker");
                                     marker.setTag(0);
                                     marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
