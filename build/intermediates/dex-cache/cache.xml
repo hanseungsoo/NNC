@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\classes-bdc87232408bce2bf6d6a7bf8e1b1cd700353afc.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\classes-3212307b5b2eb7c45c6705639d497e7a64e0976d.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\libs\libDaumMapAndroid.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="91c9de067eff6b3e026d21934e91ec45db8cd277">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\libDaumMapAndroid-047a7336eed012d4eac21e586f550f2dbbb4dbff.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.4-ec18386a99a2d52ae252f17734cef7f377c7535b.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\libs\gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\gson-2.3-188a80f2fa384225a048f5fe5447c865e2b37ab7.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-2a002330641963fb1c23ba7d6c97af2fe91e01e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\classes-db135b73ff66aadbae6969653e0dcfd37db828db.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\libs\icu4j-4.8.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="654b7021e7bb6c5b7b35c88d23cac1022c7b3d6b">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\icu4j-4.8.1.1-e0d6c58db49fb4efde9ef1af37627f4029216b48.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\classes-d2ba93003da8750959a4251a307eb47a24a08fc2.jar" />
+    </item>
+    <item
+        jar="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\han\Downloads\PortableGit\project\RrealNoon\NNNNNN\NNC\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-18f7b491bc4b09e3500da9eed32d685a17c649b9.jar" />
+    </item>
+
+</items>

@@ -1,5 +1,6 @@
 package com.example.han.coaching;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by han on 2015-11-24.
@@ -19,6 +29,8 @@ public class optionActivity extends FragmentActivity {
     Button btn,btn2;
     SharedInit SI;
     registerAlarm RA;
+    TextView OE,TE,THE,FE,FIE,SE,SEE;
+    Button OB,TB,THB,FB,FIB,SB,SEB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +47,22 @@ public class optionActivity extends FragmentActivity {
         g = (CheckBox) findViewById(R.id.checkBox6);
         btn = (Button) findViewById(R.id.stopservice);
         btn2 = (Button)findViewById(R.id.addAnni);
-
+        OE = (TextView)findViewById(R.id.OE);
+        TE = (TextView)findViewById(R.id.TE);
+        THE = (TextView)findViewById(R.id.THE);
+        FE = (TextView)findViewById(R.id.FE);
+        FIE = (TextView)findViewById(R.id.FIE);
+        SE = (TextView)findViewById(R.id.SE);
+        SEE = (TextView)findViewById(R.id.SEE);
         SI = new SharedInit(getApplicationContext());
         RA = new registerAlarm(getApplicationContext());
+        OB = (Button)findViewById(R.id.OB);
+        TB = (Button)findViewById(R.id.TB);
+        THB = (Button)findViewById(R.id.THB);
+        FB = (Button)findViewById(R.id.FB);
+        FIB = (Button)findViewById(R.id.FIB);
+        SB = (Button)findViewById(R.id.SB);
+        SEB = (Button)findViewById(R.id.SEB);
 
         if (SI.getSharedTrue("0")) {
             a.setChecked(true);
@@ -169,8 +194,99 @@ public class optionActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        OB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("0");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("0"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        TB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("1");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("1"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        THB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("2");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("2"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        FB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("3");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("3"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        FIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("4");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("4"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        SB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("5");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("5"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+        SEB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Long tt = SI.getSharedTime("6");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss");
+                String str = df.format(tt);
+                String[] click_str = str.split(":");
+                new TimePickerDialog(optionActivity.this, new MyTimePickerListener("6"), Integer.parseInt(click_str[0]), Integer.parseInt(click_str[1]), false).show();
+            }
+        });
+
+
+    }
+    public class MyTimePickerListener implements TimePickerDialog.OnTimeSetListener{
+        String index;
+        public MyTimePickerListener(String index){
+            this.index = index;
+        }
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            SI.setSharedTime(index,hourOfDay,minute);
+            Toast.makeText(optionActivity.this, "저장 되었습니다.", Toast.LENGTH_SHORT).show();
+            recreate();
+        }
+    }
 
 
     @Override
@@ -180,17 +296,6 @@ public class optionActivity extends FragmentActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void onClicked(View v) {
-        if (noonWidget.contentValue.equals("content1")) {
-            Toast.makeText(this, "위젯이 뉴스를 보여줍니다."+noonWidget.contentValue, Toast.LENGTH_SHORT).show();
-            noonWidget.contentValue = "content2";
-        } else {
-            Toast.makeText(this, "위젯이 추천 음식점을 보여줍니다."+noonWidget.contentValue, Toast.LENGTH_SHORT).show();
-            noonWidget.contentValue="content1";
-        }
-        MainActivity.mmmm();
-
-    }
 
     public void onClicked2(View v) {
         Intent intent = new Intent(this, DBActivity.class);
@@ -200,11 +305,57 @@ public class optionActivity extends FragmentActivity {
         registerAlarm rA = new registerAlarm(getApplicationContext());
         rA.testAM2("ACTION.GET.NORMAL", 3);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String timestr = "";
+        Long tt = SI.getSharedTime("0");
+        DateFormat df = new SimpleDateFormat("HH:mm:ss");
+        String str = df.format(tt);
+        String[] click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        OE.setText(timestr);
 
-    public void onProClicked(View v) {
-        registerAlarm rA = new registerAlarm(getApplicationContext());
-        rA.registerpattern();
-        rA.registerplace();
-        rA.registerOneWeek();
+        tt = SI.getSharedTime("1");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        TE.setText(timestr);
+
+        tt = SI.getSharedTime("2");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        THE.setText(timestr);
+
+        tt = SI.getSharedTime("3");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        FE.setText(timestr);
+
+        tt = SI.getSharedTime("4");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        FIE.setText(timestr);
+
+        tt = SI.getSharedTime("5");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        SE.setText(timestr);
+
+        tt = SI.getSharedTime("6");
+        df = new SimpleDateFormat("HH:mm:ss");
+        str = df.format(tt);
+        click_str = str.split(":");
+        timestr = click_str[0] +":" + click_str[1] + "\n";
+        SEE.setText(timestr);
     }
 }
