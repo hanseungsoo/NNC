@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical|center_horizontal">
     <RelativeLayout
@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/L1"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:layout_weight="1">
             <CheckBox
                 android:layout_width="wrap_content"
@@ -29,7 +29,8 @@
                 android:text="Medium Text"
                 android:id="@+id/OE"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="bottom|center_vertical"
+                android:textAlignment="center"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -81,7 +82,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="점심"
                 android:id="@+id/checkBox2"
                 android:layout_weight="1"
@@ -89,7 +90,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/THE"
@@ -99,7 +100,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="수정"
                 android:id="@+id/THB"
                 android:layout_weight="1" />
@@ -115,7 +116,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="후식"
                 android:id="@+id/checkBox6"
                 android:layout_weight="1"
@@ -123,7 +124,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/SEE"
@@ -132,7 +133,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="수정"
                 android:id="@+id/SEB"
                 android:layout_weight="1" />
@@ -148,7 +149,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="점저"
                 android:id="@+id/checkBox3"
                 android:layout_weight="1"
@@ -156,7 +157,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/FE"
@@ -165,7 +166,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="수정"
                 android:id="@+id/FB"
                 android:layout_weight="1" />
@@ -181,7 +182,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="저녁"
                 android:id="@+id/checkBox4"
                 android:layout_weight="1"
@@ -189,7 +190,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/FIE"
@@ -199,7 +200,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="수정"
                 android:id="@+id/FIB"
                 android:layout_weight="1" />
@@ -214,7 +215,7 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="야식"
                 android:id="@+id/checkBox5"
                 android:layout_weight="1"
@@ -222,7 +223,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/SE"
@@ -231,7 +232,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="수정"
                 android:id="@+id/SB"
                 android:layout_weight="1" />

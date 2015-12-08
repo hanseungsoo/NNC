@@ -334,9 +334,9 @@ public class noonWidget extends AppWidgetProvider {
 
         if(themaValue==0) {
             updateViews.setTextViewText(R.id.widget_thema, "기념일추천("+(swapValue+1)+")");
-            if(item1.address.substring(0, 3).equals("(X)")) {
-                updateViews.setTextViewText(R.id.widget_title, "오늘은 기념일이 아니어서");
-                updateViews.setTextViewText(R.id.widget_cg, "추천되는 음식점이 없습니다.");
+            if(item1.address.substring(0, 2).equals("추천") || item1.address.substring(0, 3).equals("(X)")) {
+                updateViews.setTextViewText(R.id.widget_title, "");
+                updateViews.setTextViewText(R.id.widget_cg, "오늘은 기념일이 아니어서 추천되는 음식점이 없습니다.");
                 updateViews.setTextViewText(R.id.widget_address, "");
             }else {
                 updateViews.setTextViewText(R.id.widget_title, item1.title);
@@ -345,7 +345,7 @@ public class noonWidget extends AppWidgetProvider {
             }
         } else if(themaValue==1) {
             updateViews.setTextViewText(R.id.widget_thema, "맞춤음식 추천("+(swapValue+1)+")");
-            if(item1.address.substring(0, 3).equals("(X)")) {
+            if(item1.address.substring(0, 2).equals("추천") || item1.address.substring(0, 3).equals("(X)")) {
                 updateViews.setTextViewText(R.id.widget_title, "");
                 updateViews.setTextViewText(R.id.widget_cg, "맞춤 추천되는 음식점이 없습니다.");
                 updateViews.setTextViewText(R.id.widget_address, "");
@@ -356,7 +356,7 @@ public class noonWidget extends AppWidgetProvider {
             }
         } else if(themaValue==2) {
             updateViews.setTextViewText(R.id.widget_thema, "가까운거리 추천("+(swapValue+1)+")");
-            if(item1.address.substring(0, 3).equals("(X)")) {
+            if(item1.address.substring(0, 2).equals("추천") || item1.address.substring(0, 3).equals("(X)")) {
                 updateViews.setTextViewText(R.id.widget_title, "");
                 updateViews.setTextViewText(R.id.widget_cg, "가까운 거리 추천되는 음식점이 없습니다.");
                 updateViews.setTextViewText(R.id.widget_address, "");
@@ -367,7 +367,7 @@ public class noonWidget extends AppWidgetProvider {
             }
         } else {
             updateViews.setTextViewText(R.id.widget_thema, "무작위 추천("+(swapValue+1)+")");
-            if(item1.address.substring(0, 3).equals("(X)")) {
+            if(item1.address.substring(0, 2).equals("추천") || item1.address.substring(0, 3).equals("(X)")) {
                 updateViews.setTextViewText(R.id.widget_title, "");
                 updateViews.setTextViewText(R.id.widget_cg, "무작위 추천되는 음식점이 없습니다.");
                 updateViews.setTextViewText(R.id.widget_address, "");
