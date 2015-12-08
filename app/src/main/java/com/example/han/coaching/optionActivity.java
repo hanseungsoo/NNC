@@ -265,13 +265,13 @@ public class optionActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SetViewTime("1", OE);
-        SetViewTime("2",TE);
-        SetViewTime("3",THE);
-        SetViewTime("4",FE);
-        SetViewTime("5",FIE);
-        SetViewTime("6",SE);
-        SetViewTime("7",SEE);
+        SetViewTime("0", OE);
+        SetViewTime("1",TE);
+        SetViewTime("2",THE);
+        SetViewTime("3",FE);
+        SetViewTime("4",FIE);
+        SetViewTime("5",SE);
+        SetViewTime("6",SEE);
     }
     public void SetViewTime(String index,TextView tv){
         String timestr = "";
