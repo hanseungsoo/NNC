@@ -254,6 +254,7 @@ public class MainActivity extends FragmentActivity {
             ThemaItem.add(i-1,item);
         }
 
+
         NewsItem item = new NewsItem();
         item.setTitle("눈치코칭 뉴스");
         item.setDesc("눈치코칭입니다.");
