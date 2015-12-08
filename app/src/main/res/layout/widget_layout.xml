@@ -3,7 +3,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="@drawable/widgetbg">
     <RelativeLayout
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_margin="8dp">
@@ -21,6 +21,8 @@
             android:src="@drawable/noon_widget_icon"
             android:id="@+id/widget_image"
             android:scaleType="fitCenter"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_below="@+id/thema_change_button"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

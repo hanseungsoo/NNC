@@ -172,7 +172,7 @@ public class MainActivity extends FragmentActivity {
                         }
                         break;
                     case 1:
-                        setContentView(R.layout.activity_main);
+                        setContentView(R.layout.activity_main1);
                         nameTv = (TextView)findViewById(R.id.nameView);
                         telTv = (TextView)findViewById(R.id.telView);
                         cateTv = (TextView)findViewById(R.id.cateView);
@@ -263,7 +263,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if(position == 0){
-                setContentView(R.layout.activity_main);
+                setContentView(R.layout.activity_main1);
                 nameTv = (TextView)findViewById(R.id.nameView);
                 telTv = (TextView)findViewById(R.id.telView);
                 cateTv = (TextView)findViewById(R.id.cateView);
@@ -374,6 +374,7 @@ public class MainActivity extends FragmentActivity {
         update.setAction("chae.widget.update");
         mContext.sendBroadcast(update);
     }
+
 
     public void setDrawer(int a){
         ActionBar actionBar = getActionBar();
