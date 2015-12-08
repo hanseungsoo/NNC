@@ -10,12 +10,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+<<<<<<< HEAD
+=======
+import android.widget.EditText;
+>>>>>>> 8216f10ccc0eeb9b25a989a4a57da1e70b8f12f4
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+=======
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+>>>>>>> 8216f10ccc0eeb9b25a989a4a57da1e70b8f12f4
 
 /**
  * Created by han on 2015-11-24.
