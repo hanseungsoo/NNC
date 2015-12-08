@@ -42,6 +42,7 @@ import java.util.ArrayList;
 public class MainActivity extends FragmentActivity {
 
 
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -78,7 +79,7 @@ public class MainActivity extends FragmentActivity {
         Intent a = new Intent(this, GpsService.class);
         startService(a);
         System.setProperty("http.keepAlive","false");
-        //珥덇린�솕&�븣�엺
+
         SharedInit SI = new SharedInit(getApplicationContext());
         registerAlarm rA = new registerAlarm(getApplicationContext());
         if(!SI.getSharedTrue("isCreate")){
@@ -91,55 +92,7 @@ public class MainActivity extends FragmentActivity {
             rA.registerpattern();
             rA.registerplace();
         }
-       // rA.testAM("ACTION.GET.ONE",21,45);
-
-        //諛붿씤�뵫
-        actionbar = getActionBar();
-
-        //Drawer
-        mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        // set a custom shadow that overlays the main content when the drawer opens
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        // enable ActionBar app icon to behave as action to toggle nav drawer
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
-                R.string.drawer_open,  /* "open drawer" description for accessibility */
-                R.string.drawer_close  /* "close drawer" description for accessibility */
-        ) {
-            public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            selectItem(0);
-        }
-
-        // tab
-        actionbar.setHomeButtonEnabled(false);
+        setDrawer(ActionBar.NAVIGATION_MODE_TABS);
 
         mHandler = new Handler(Looper.getMainLooper()){
             @Override
@@ -172,7 +125,7 @@ public class MainActivity extends FragmentActivity {
                         }
                         break;
                     case 1:
-                        setContentView(R.layout.activity_main1);
+                        setContentView(R.layout.activity_main);
                         nameTv = (TextView)findViewById(R.id.nameView);
                         telTv = (TextView)findViewById(R.id.telView);
                         cateTv = (TextView)findViewById(R.id.cateView);
@@ -210,12 +163,6 @@ public class MainActivity extends FragmentActivity {
                                 SP2.setSelection(noonWidget.swapValue,true);
                             }
                         }
-                        /*if(staticMerge.timer){
-                            Log.i("aaaa","타이머가 울렸네~");
-                            registerAlarm rA = new registerAlarm(MainActivity.mContext);
-                            rA.registerNews(30);
-                            staticMerge.timer = false;
-                        }*/
                         break;
                 }
 
@@ -263,71 +210,15 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if(position == 0){
-                setContentView(R.layout.activity_main1);
-                nameTv = (TextView)findViewById(R.id.nameView);
-                telTv = (TextView)findViewById(R.id.telView);
-                cateTv = (TextView)findViewById(R.id.cateView);
-                addrTv = (TextView)findViewById(R.id.addrView);
-                foodImg = (ImageView)findViewById(R.id.cookImage);
-                SP2 = (Spinner)findViewById(R.id.spinner2);
-                SelectBtn = (Button)findViewById(R.id.check);
-                final ArrayList<String> arraylist2 = new ArrayList<String>();
-                arraylist2.add("추천1");
-                arraylist2.add("추천2");
-                arraylist2.add("추천3");
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.mContext,
-                        android.R.layout.simple_spinner_dropdown_item, arraylist2);
-                SP2.setAdapter(adapter);
-
-                mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
-                mapViewContainer.removeAllViews();
-                mapView = null;
-                mapView = new MapView(MainActivity.this);
-                mapView.setDaumMapApiKey("9db6272582177f1d7b0643e35e1993e9");
-
-                mapViewContainer.addView(mapView);
-
-
-                actionbar.removeAllTabs();
-                setDrawer(ActionBar.NAVIGATION_MODE_TABS);
-                for (String tab_name : tabs) {
-                    actionbar.addTab(actionbar.newTab().setText(tab_name)
-                            .setTabListener(new TabListen()));
-                }
+                mHandler.sendEmptyMessage(1);
             }else if(position ==3) {
-                setContentView(R.layout.activity_news);
-                setDrawer(ActionBar.NAVIGATION_MODE_STANDARD);
-                TextView newstitle = (TextView)findViewById(R.id.newsTitle);
-                TextView newsdesc = (TextView)findViewById(R.id.newsDesc);
-                ImageView newsimage = (ImageView)findViewById(R.id.newsImage);
-                Button newsbutton = (Button)findViewById(R.id.newsButton);
-
-                if(MainActivity.NewsNews.size()>0){
-                    newstitle.setText(NewsNews.get(0).getTitle());
-                    newsdesc.setText(NewsNews.get(0).getDesc());
-                    if(NewsNews.get(0).getImageUrl().equals("")){
-                        NewsNews.get(0).setImageUrl("http://222.116.135.76:8080/Noon/images/noon.png");
-                        new DownloadImageTask(newsimage).execute(NewsNews.get(0).getImageUrl());
-                    }else{
-                        new DownloadImageTask(newsimage).execute(NewsNews.get(0).getImageUrl());
-                    }
-                    newsbutton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Uri uri = Uri.parse(NewsNews.get(0).getLink());
-                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                            startActivity(intent);
-                        }
-                    });
-                }
+                mHandler.sendEmptyMessage(0);
 
             }
+
         }
     }
-    private void selectItem(int position) {
 
-    }
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -370,15 +261,15 @@ public class MainActivity extends FragmentActivity {
     }
 
     public static void mmmm() {
+        noonWidget.saveNoon(mContext);
         Intent update = new Intent();
         update.setAction("chae.widget.update");
         mContext.sendBroadcast(update);
     }
 
-
     public void setDrawer(int a){
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(a);
+        actionbar = getActionBar();
+        actionbar.setNavigationMode(a);
         mTitle = mDrawerTitle = getTitle();
         mPlanetTitles = getResources().getStringArray(R.array.planets_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -408,6 +299,7 @@ public class MainActivity extends FragmentActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        actionbar.setHomeButtonEnabled(false);
 
     }
     public class TabListen implements ActionBar.TabListener{
@@ -418,171 +310,22 @@ public class MainActivity extends FragmentActivity {
             switch (position) {
                 case 0:
                     if(size>=0) {
-                        mapView.removeAllPOIItems();
-                        Item in1 = MainActivity.ThemaItem.get(0);
-                        MapPOIItem marker = new MapPOIItem();
-                        nameTv.setText("" + in1.title);
-                        telTv.setText("" + in1.phone);
-                        cateTv.setText("" + in1.category);
-                        addrTv.setText("" + in1.address);
-                        if(in1.imageUrl.equals("")){
-                            in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }else{
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }
-                        telTv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Item in1 = MainActivity.ThemaItem.get(0);
-                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                startActivity(intent);
-                            }
-                        });
-                        SelectBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                Item in1 = MainActivity.ThemaItem.get(0);
-                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                dbHandler.click_time();
-                                dbHandler.food_favorite_insert();
-                                dbHandler.close();
-                            }
-                        });
-                        marker.setItemName("Default Marker");
-                        marker.setTag(0);
-                        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                        mapView.addPOIItem(marker);
-                        Toast.makeText(getApplicationContext(), "" + size, Toast.LENGTH_SHORT).show();
+                        SetFoodViewItem(0);
                         if(MainActivity.ThemaItem.size()>0){
                             SP2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    MapPOIItem marker;
-                                    Item in1;
                                     switch (position){
                                         case 0:
-                                            in1 = MainActivity.ThemaItem.get(0);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(0);
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(0);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
+                                            SetFoodViewItem(0);
 
                                             break;
                                         case 1:
-                                            in1 = MainActivity.ThemaItem.get(1);
-
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(1);
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(1);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
+                                            SetFoodViewItem(1);
 
                                             break;
                                         case 2:
-                                            in1 = MainActivity.ThemaItem.get(2);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(2);
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(2);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
+                                            SetFoodViewItem(2);
 
                                             break;
 
@@ -591,224 +334,30 @@ public class MainActivity extends FragmentActivity {
 
                                 @Override
                                 public void onNothingSelected(AdapterView<?> parent) {
-                                    Item in1 = MainActivity.ThemaItem.get(0);
-                                    MapPOIItem marker = new MapPOIItem();
-                                    nameTv.setText("" + in1.title);
-                                    telTv.setText("" + in1.phone);
-                                    cateTv.setText("" + in1.category);
-                                    addrTv.setText("" + in1.address);
-                                    if(in1.imageUrl.equals("")){
-                                        in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }else{
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }
-                                    telTv.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Item in1 = MainActivity.ThemaItem.get(0);
-                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                            startActivity(intent);
-                                        }
-                                    });
-                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                            Item in1 = MainActivity.ThemaItem.get(0);
-                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                            dbHandler.click_time();
-                                            dbHandler.food_favorite_insert();
-                                            dbHandler.close();
-                                        }
-                                    });
-                                    marker.setItemName("Default Marker");
-                                    marker.setTag(0);
-                                    marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                    marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                    mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                    mapView.addPOIItem(marker);
+                                    SetFoodViewItem(0);
                                 }
                             });
                         }
                     }
-
-
                     SP2.setSelection(0, true);
                     break;
                 case 1:
                     if(size>=3) {
-                        mapView.removeAllPOIItems();
-                        Item in1 = MainActivity.ThemaItem.get(3);
-                        MapPOIItem marker = new MapPOIItem();
-                        nameTv.setText("" + in1.title);
-                        telTv.setText("" + in1.phone);
-                        cateTv.setText("" + in1.category);
-                        addrTv.setText("" + in1.address);
-                        if(in1.imageUrl.equals("")){
-                            in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }else{
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }
-                        telTv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Item in1 = MainActivity.ThemaItem.get(3);
-                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                startActivity(intent);
-                            }
-                        });
-                        SelectBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                Item in1 = MainActivity.ThemaItem.get(3);
-                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                dbHandler.click_time();
-                                dbHandler.food_favorite_insert();
-                                dbHandler.close();
-                            }
-                        });
-                        marker.setItemName("Default Marker");
-                        marker.setTag(0);
-                        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                        mapView.addPOIItem(marker);
-                        Toast.makeText(getApplicationContext(), "" + size, Toast.LENGTH_SHORT).show();
+                        SetFoodViewItem(3);
                         if(MainActivity.ThemaItem.size()>0){
                             SP2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    MapPOIItem marker;
-                                    Item in1;
                                     switch (position){
                                         case 0:
-                                            in1 = MainActivity.ThemaItem.get(3);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(3);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(3);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(3);
                                             break;
                                         case 1:
-                                            in1 = MainActivity.ThemaItem.get(4);
-
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(4);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(4);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
+                                            SetFoodViewItem(4);
 
                                             break;
                                         case 2:
-                                            in1 = MainActivity.ThemaItem.get(5);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(5);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(5);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(5);
                                             break;
 
                                     }
@@ -816,44 +365,7 @@ public class MainActivity extends FragmentActivity {
 
                                 @Override
                                 public void onNothingSelected(AdapterView<?> parent) {
-                                    Item in1 = MainActivity.ThemaItem.get(3);
-                                    MapPOIItem marker = new MapPOIItem();
-                                    nameTv.setText("" + in1.title);
-                                    telTv.setText("" + in1.phone);
-                                    cateTv.setText("" + in1.category);
-                                    addrTv.setText("" + in1.address);
-                                    if(in1.imageUrl.equals("")){
-                                        in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }else{
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }
-                                    telTv.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Item in1 = MainActivity.ThemaItem.get(3);
-                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                            startActivity(intent);
-                                        }
-                                    });
-                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                            Item in1 = MainActivity.ThemaItem.get(3);
-                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                            dbHandler.click_time();
-                                            dbHandler.food_favorite_insert();
-                                            dbHandler.close();
-                                        }
-                                    });
-                                    marker.setItemName("Default Marker");
-                                    marker.setTag(0);
-                                    marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                    marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                    mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                    mapView.addPOIItem(marker);
+                                    SetFoodViewItem(3);
                                 }
                             });
                         }
@@ -862,176 +374,21 @@ public class MainActivity extends FragmentActivity {
                     break;
                 case 2:
                     if(size>=6) {
-                        mapView.removeAllPOIItems();
-                        Item in1 = MainActivity.ThemaItem.get(6);
-                        MapPOIItem marker = new MapPOIItem();
-                        nameTv.setText("" + in1.title);
-                        telTv.setText("" + in1.phone);
-                        cateTv.setText("" + in1.category);
-                        addrTv.setText("" + in1.address);
-                        if(in1.imageUrl.equals("")){
-                            in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }else{
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }
-                        telTv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Item in1 = MainActivity.ThemaItem.get(6);
-                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                startActivity(intent);
-                            }
-                        });
-                        SelectBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                Item in1 = MainActivity.ThemaItem.get(6);
-                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                dbHandler.click_time();
-                                dbHandler.food_favorite_insert();
-                                dbHandler.close();
-                            }
-                        });
-                        marker.setItemName("Default Marker");
-                        marker.setTag(0);
-                        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                        mapView.addPOIItem(marker);
-                        Toast.makeText(getApplicationContext(), "" + size, Toast.LENGTH_SHORT).show();
+                        SetFoodViewItem(6);
                         if(MainActivity.ThemaItem.size()>0){
                             SP2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    MapPOIItem marker;
-                                    Item in1;
+
                                     switch (position){
                                         case 0:
-                                            in1 = MainActivity.ThemaItem.get(6);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(6);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(6);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(6);
                                             break;
                                         case 1:
-                                            in1 = MainActivity.ThemaItem.get(7);
-
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(7);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-                                                        Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(7);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(7);
                                             break;
                                         case 2:
-                                            in1 = MainActivity.ThemaItem.get(8);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(8);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(8);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(8);
                                             break;
 
                                     }
@@ -1039,44 +396,7 @@ public class MainActivity extends FragmentActivity {
 
                                 @Override
                                 public void onNothingSelected(AdapterView<?> parent) {
-                                    Item in1 = MainActivity.ThemaItem.get(6);
-                                    MapPOIItem marker = new MapPOIItem();
-                                    nameTv.setText("" + in1.title);
-                                    telTv.setText("" + in1.phone);
-                                    cateTv.setText("" + in1.category);
-                                    addrTv.setText("" + in1.address);
-                                    if(in1.imageUrl.equals("")){
-                                        in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }else{
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }
-                                    telTv.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Item in1 = MainActivity.ThemaItem.get(6);
-                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                            startActivity(intent);
-                                        }
-                                    });
-                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                            Item in1 = MainActivity.ThemaItem.get(6);
-                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                            dbHandler.click_time();
-                                            dbHandler.food_favorite_insert();
-                                            dbHandler.close();
-                                        }
-                                    });
-                                    marker.setItemName("Default Marker");
-                                    marker.setTag(0);
-                                    marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                    marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                    mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                    mapView.addPOIItem(marker);
+                                    SetFoodViewItem(6);
                                 }
                             });
                         }
@@ -1085,176 +405,21 @@ public class MainActivity extends FragmentActivity {
                     break;
                 case 3:
                     if(size>=9) {
-                        mapView.removeAllPOIItems();
-                        Item in1 = MainActivity.ThemaItem.get(9);
-                        MapPOIItem marker = new MapPOIItem();
-                        nameTv.setText("" + in1.title);
-                        telTv.setText("" + in1.phone);
-                        cateTv.setText("" + in1.category);
-                        addrTv.setText("" + in1.address);
-                        if(in1.imageUrl.equals("")){
-                            in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }else{
-                            new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                        }
-                        telTv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Item in1 = MainActivity.ThemaItem.get(9);
-                                Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                startActivity(intent);
-                            }
-                        });
-                        SelectBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                Item in1 = MainActivity.ThemaItem.get(9);
-                                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                dbHandler.click_time();
-                                dbHandler.food_favorite_insert();
-                                dbHandler.close();
-                            }
-                        });
-                        marker.setItemName("Default Marker");
-                        marker.setTag(0);
-                        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                        mapView.addPOIItem(marker);
-                        Toast.makeText(getApplicationContext(), "" + size, Toast.LENGTH_SHORT).show();
+                        SetFoodViewItem(9);
                         if(MainActivity.ThemaItem.size()>0){
                             SP2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    MapPOIItem marker;
-                                    Item in1;
+
                                     switch (position){
                                         case 0:
-                                            in1 = MainActivity.ThemaItem.get(9);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(9);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(9);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(9);
                                             break;
                                         case 1:
-                                            in1 = MainActivity.ThemaItem.get(10);
-
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(10);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(10);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(10);
                                             break;
                                         case 2:
-                                            in1 = MainActivity.ThemaItem.get(11);
-                                            marker = new MapPOIItem();
-                                            nameTv.setText("" + in1.title);
-                                            telTv.setText("" + in1.phone);
-                                            cateTv.setText("" + in1.category);
-                                            addrTv.setText("" + in1.address);
-                                            if(in1.imageUrl.equals("")){
-                                                in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }else{
-                                                new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                            }
-                                            telTv.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Item in1 = MainActivity.ThemaItem.get(11);
-                                                    Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                            SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                                    Item in1 = MainActivity.ThemaItem.get(11);
-                                                    DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                                    dbHandler.click_time();
-                                                    dbHandler.food_favorite_insert();
-                                                    dbHandler.close();
-                                                }
-                                            });
-                                            marker.setItemName("Default Marker");
-                                            marker.setTag(0);
-                                            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                            mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                            mapView.addPOIItem(marker);
-
+                                            SetFoodViewItem(11);
                                             break;
 
                                     }
@@ -1262,44 +427,7 @@ public class MainActivity extends FragmentActivity {
 
                                 @Override
                                 public void onNothingSelected(AdapterView<?> parent) {
-                                    Item in1 = MainActivity.ThemaItem.get(9);
-                                    MapPOIItem marker = new MapPOIItem();
-                                    nameTv.setText("" + in1.title);
-                                    telTv.setText("" + in1.phone);
-                                    cateTv.setText("" + in1.category);
-                                    addrTv.setText("" + in1.address);
-                                    if(in1.imageUrl.equals("")){
-                                        in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }else{
-                                        new DownloadImageTask(foodImg).execute(in1.imageUrl);
-                                    }
-                                    telTv.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Item in1 = MainActivity.ThemaItem.get(9);
-                                            Toast.makeText(mContext,"tel:"+in1.phone,Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
-                                            startActivity(intent);
-                                        }
-                                    });
-                                    SelectBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(mContext,"선택되었습니다.",Toast.LENGTH_SHORT).show();
-                                            Item in1 = MainActivity.ThemaItem.get(9);
-                                            DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
-                                            dbHandler.click_time();
-                                            dbHandler.food_favorite_insert();
-                                            dbHandler.close();
-                                        }
-                                    });
-                                    marker.setItemName("Default Marker");
-                                    marker.setTag(0);
-                                    marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
-                                    marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-                                    mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
-                                    mapView.addPOIItem(marker);
+                                    SetFoodViewItem(9);
                                 }
                             });
                         }
@@ -1370,5 +498,44 @@ public class MainActivity extends FragmentActivity {
         SaveData svData = new SaveData(mContext);
         svData.save("SharedNews");
         svData.save("SharedFood");
+    }
+    public void SetFoodViewItem(final int index){
+        mapView.removeAllPOIItems();
+        Item in1 = MainActivity.ThemaItem.get(index);
+        MapPOIItem marker = new MapPOIItem();
+        nameTv.setText("" + in1.title);
+        telTv.setText("" + in1.phone);
+        cateTv.setText("" + in1.category);
+        addrTv.setText("" + in1.address);
+        if(in1.imageUrl.equals("")){
+            in1.imageUrl ="http://222.116.135.76:8080/Noon/images/noon.png";
+            new DownloadImageTask(foodImg).execute(in1.imageUrl);
+        }else{
+            new DownloadImageTask(foodImg).execute(in1.imageUrl);
+        }
+        telTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item in1 = MainActivity.ThemaItem.get(index);
+                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+in1.phone));
+                startActivity(intent);
+            }
+        });
+        SelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item in1 = MainActivity.ThemaItem.get(index);
+                DBHandler dbHandler = DBHandler.open(MainActivity.mContext, in1);
+                dbHandler.click_time();
+                dbHandler.food_favorite_insert();
+                dbHandler.close();
+            }
+        });
+        marker.setItemName("Default Marker");
+        marker.setTag(0);
+        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude));
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(in1.latitude, in1.longitude), true);
+        mapView.addPOIItem(marker);
     }
 }

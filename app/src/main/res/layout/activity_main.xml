@@ -55,12 +55,11 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp">
 
-
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:gravity="center_horizontal">
 
                             <TextView
@@ -70,8 +69,8 @@
                                 android:id="@+id/nameView"
                                 android:singleLine="false"
                                 android:gravity="center_horizontal"
-                                android:layout_marginLeft="40dp"
-                                android:layout_marginRight="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
                                 android:textSize="20dp" />
 
                             <TextView
@@ -79,8 +78,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="New Text"
                                 android:id="@+id/telView"
-                                android:layout_marginLeft="40dp"
-                                android:layout_marginRight="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
                                 android:gravity="center_horizontal"
                                 android:textSize="20dp" />
 
@@ -89,19 +88,10 @@
                                 android:layout_height="wrap_content"
                                 android:text="New Text"
                                 android:id="@+id/cateView"
-                                android:layout_marginRight="40dp"
-                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginLeft="20dp"
                                 android:gravity="center_horizontal"
                                 android:textSize="20dp" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="New Text"
-                                android:id="@+id/addrView"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:textSize="20dp"
-                                android:gravity="center_horizontal"/>
 
                         </LinearLayout>
 
@@ -109,7 +99,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/cookImage"
-                            android:layout_weight="1" />
+                            android:layout_weight="3" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -117,26 +107,39 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:layout_weight="9">
+                        android:layout_weight="8">
 
-
-                        <RelativeLayout
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            >
+                            android:text="New Text"
+                            android:id="@+id/addrView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20dp"
+                            android:gravity="center_horizontal"
+                            android:layout_weight="2" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
                             <Button
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="정보선택하기"
-                                android:id="@+id/check" />
+                                android:text="선택정보주기"
+                                android:id="@+id/check"
+                                android:layout_weight="2" />
+
                             <Spinner
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:id="@+id/spinner2"
-                                android:layout_alignBottom="@+id/check"
-                                android:layout_toRightOf="@+id/check"
-                                android:layout_toEndOf="@+id/check" />
-                        </RelativeLayout>
+                                android:layout_weight="2" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
