@@ -21,33 +21,6 @@ public class registerAlarm {
         this.context = context;
     }
 
-    public void testAM(String index,int hour,int minute) {
-
-        try {
-            long atime = System.currentTimeMillis();
-
-            Calendar curTime = Calendar.getInstance();
-            curTime.set(Calendar.HOUR_OF_DAY, hour);
-            curTime.set(Calendar.MINUTE, minute);
-            curTime.set(Calendar.SECOND, 0);
-            curTime.set(Calendar.MILLISECOND, 0);
-            long btime = curTime.getTimeInMillis();
-            long triggerTime = btime;
-            if (atime > btime)
-                triggerTime += 1000 * 60 * 60 * 24;
-            Intent intentMyService;
-            intentMyService = new Intent(index);
-            AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-            PendingIntent sender = PendingIntent.getBroadcast(context, 1, intentMyService, 0);
-
-            // 서비스 시작
-            am.set(AlarmManager.RTC_WAKEUP, triggerTime, sender);
-        } catch (Exception e) {
-            Log.d("MpMainActivity", e.getMessage() + "");
-
-            e.printStackTrace();
-        }
-    }
     public void testAM2(String index,int sec) {
 
         try {
@@ -73,11 +46,9 @@ public class registerAlarm {
         }
     }
     public void registerNews(int sec) {
-        SharedInit SI = new SharedInit(context);
         try {
             Calendar cal = Calendar.getInstance();
             cal.set(Calendar.SECOND, cal.get(Calendar.SECOND) + sec);
-            long oneHour = 60 * 60 * 1000;
             Intent intentMyService;
             intentMyService = new Intent("ACTION.SET.NEWS");
             AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
