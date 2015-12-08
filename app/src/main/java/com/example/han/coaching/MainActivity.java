@@ -261,7 +261,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     public static void mmmm() {
-        noonWidget.saveNoon(mContext);
         Intent update = new Intent();
         update.setAction("chae.widget.update");
         mContext.sendBroadcast(update);
