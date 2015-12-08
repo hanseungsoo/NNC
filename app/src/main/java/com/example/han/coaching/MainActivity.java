@@ -121,7 +121,7 @@ public class MainActivity extends FragmentActivity {
                         }
                         if(noonWidget.CLICK_FLAG == true) {
                             noonWidget.CLICK_FLAG = false;
-                            noonWidget.mTimer.cancel();
+                            noonWidget.SELECT_FLAG = false;
                         }
                         break;
                     case 1:
@@ -156,6 +156,7 @@ public class MainActivity extends FragmentActivity {
                         }
                         if(noonWidget.CLICK_FLAG == true) {
                             noonWidget.CLICK_FLAG = false;
+                            noonWidget.SELECT_FLAG = false;
                             noonWidget.mTimer.cancel();
                             if(noonWidget.contentValue.equals("content1")) {
                                 Log.i("widget", "widget->main, " + noonWidget.contentValue);

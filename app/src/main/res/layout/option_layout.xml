@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical|center_horizontal">
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:orientation="vertical"
@@ -37,7 +37,7 @@
                     android:text="Medium Text"
                     android:id="@+id/OE"
                     android:layout_weight="1"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                     android:text="Medium Text"
                     android:id="@+id/TE"
                     android:layout_weight="1"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
                     android:id="@+id/THE"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                     android:text="Medium Text"
                     android:id="@+id/SEE"
                     android:layout_weight="1"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
                     android:text="Medium Text"
                     android:id="@+id/FE"
                     android:layout_weight="1"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                     android:id="@+id/FIE"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
                     android:text="Medium Text"
                     android:id="@+id/SE"
                     android:layout_weight="1"
-                    android:gravity="bottom" />
+                    android:gravity="center" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -238,29 +238,53 @@
         </LinearLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRL"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STOP service"
+            android:id="@+id/stopservice"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/button4"
+            android:layout_toEndOf="@+id/button4" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="STOP service"
-        android:id="@+id/stopservice"
-        android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지금 음식점 추천"
+            android:onClick="onClicked3"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@+id/button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/button4" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Database check"
+            android:onClick="onClicked2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/button" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기념일추가"
+            android:id="@+id/addAnni"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignTop="@+id/button4"
+            android:layout_toRightOf="@+id/button4"
+            android:layout_toEndOf="@+id/button4" />
+    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="지금 음식점 추천"
-        android:onClick="onClicked3"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Database check"
-        android:onClick="onClicked2"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기념일추가"
-        android:id="@+id/addAnni"
-        android:layout_gravity="center_horizontal" />
 
-</LinearLayout>
+</RelativeLayout>

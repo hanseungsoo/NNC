@@ -40,6 +40,7 @@ public class noonWidget extends AppWidgetProvider {
     public static int themaValue;
     public static int swapValue;
     public static boolean CLICK_FLAG;
+    public static boolean SELECT_FLAG;
     public static String TAG = "noonWidget";
 
     static {
@@ -55,6 +56,7 @@ public class noonWidget extends AppWidgetProvider {
         contentValue = "content2";
         themaValue = 0;
         CLICK_FLAG = false;
+        SELECT_FLAG = false;
         swapValue = 0;
     }
 
@@ -191,7 +193,7 @@ public class noonWidget extends AppWidgetProvider {
                 MainActivity.ViewInt=0;
             }
             CLICK_FLAG = true;
-
+            SELECT_FLAG = true;
             mTask = new TimerTask() {
                 @Override
                 public void run() {
