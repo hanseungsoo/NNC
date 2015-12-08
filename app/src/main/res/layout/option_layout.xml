@@ -37,7 +37,7 @@
                     android:text="Medium Text"
                     android:id="@+id/OE"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                     android:text="Medium Text"
                     android:id="@+id/TE"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
                     android:id="@+id/THE"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                     android:text="Medium Text"
                     android:id="@+id/SEE"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
                     android:text="Medium Text"
                     android:id="@+id/FE"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                     android:id="@+id/FIE"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
                     android:text="Medium Text"
                     android:id="@+id/SE"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="bottom" />
 
                 <Button
                     android:layout_width="wrap_content"
