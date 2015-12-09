@@ -31,7 +31,7 @@ public class optionActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.option_layout);
+        setContentView(R.layout.option_layout1);
 
 
         a = (CheckBox) findViewById(R.id.checkBox0);

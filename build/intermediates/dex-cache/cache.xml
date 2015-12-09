@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-5918841ff915e1374e727f33a4feb6b908053816.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\classes-0fad19d55a4c29bb44aa171efab5cfb10a60e88a.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\classes-cb3541207e49a6f4faaa2a99bc5b5be87d07ace5.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\classes-7a1ee60a7c10d0f20ddb72bbc5de4546b963a93e.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\libs\libDaumMapAndroid.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="91c9de067eff6b3e026d21934e91ec45db8cd277">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\libDaumMapAndroid-dfff6c118bdffc0186ba84fbb80b22f6b39a0d08.jar" />
+    </item>
+    <item
+        jar="D:\Program\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-19ff179045445521fe12671cb1ae692077254fea.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\classes-444f7d150a01b1fa0790b9643548322ab7b21558.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\libs\icu4j-4.8.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="654b7021e7bb6c5b7b35c88d23cac1022c7b3d6b">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\icu4j-4.8.1.1-d56d35e09604257b1be20342b84859663b223e44.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.4-efe1d9c02be306e9c24bcc9db1885090a9a5b6a2.jar" />
+    </item>
+    <item
+        jar="D:\noon\workspace\1207\NNC\app\libs\gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="D:\noon\workspace\1207\NNC\app\build\intermediates\pre-dexed\debug\gson-2.3-2544606ff3b448c5d85714507e239ca71daaf02f.jar" />
+    </item>
+
+</items>
